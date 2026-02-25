@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>关于 | Winston</title>
+<meta name="description" content="Stay Young Stay Simple">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://winston.ink/favicon.ico?v=1772041767423">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://winston.ink/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://winston.ink">
+        <img class="avatar" src="https://winston.ink/images/avatar.png?v=1772041767423" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://winston.ink">
+        <h1 class="site-title">Winston</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">关于</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2015-01-28</span>
+            
+          </div>
+          <div class="post-content" v-pre>
+            <p><strong>关于本站：</strong><br>
+本来是想记录一些技术笔记，<br>
+但是往往直接Google或者把别人博客收藏到书签中，<br>
+又不是不能用[捂脸哭]。<br>
+最后也只能随便写一些牢骚放在上面(反正也没人看)。</p>
+<p><strong>本站配置：</strong><br>
+框架：<s><a href="http://typecho.org/" target="_blank">Typecho</a></s> --&gt; <a href="https://open.gridea.dev/" target="_blank">Gridea</a><br>
+主题：<s><a href="https://www.offodd.com/" target="_blank">Initial</a></s> --&gt; <a href="https://github.com/getgridea/gridea-theme-fly" target="_blank">Fly</a><br>
+主机：<s><a href="https://www.aliyun.com/" target="_blank">万网虚拟主机</a></s> --&gt; <a href="https://pages.github.com/" target="_blank">GitHub Pages</a><br>
+PS：开始接触的是静态博客Hexo，但是当初太麻烦了。就从动态博客Typecho入手，中间经历过备案，升级成https，使用了几年也没写几篇博客，反而主机、域名都需要花钱。最不能接受的是https免费证书从之前的有效期一年变成现在的三个月，简直是丧心病狂。所以2025初转入Gridea静态博客，兜兜转转又回来了。主要是博客更新频率低，另外GitHub不倒Pages不倒(小树不倒我不倒)。</p>
+<p><strong>个人简介：</strong><br>
+网名：濮水舞蝶(《庄子钓于濮水》、《庄周梦蝶》)<br>
+格言：Stay Young Stay Simple. (孜孜以求、勿忘初心)</p>
+<hr>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=625248136&auto=0&height=430"></iframe>
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">Stay Young Stay Simple</div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/braumhuang" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://x.com/braumhuang" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://winston.ink/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

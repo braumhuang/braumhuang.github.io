@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>FastStone Capture | Winston</title>
+<meta name="description" content="Stay Young Stay Simple">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://winston.ink/favicon.ico?v=1772041767423">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://winston.ink/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://winston.ink">
+        <img class="avatar" src="https://winston.ink/images/avatar.png?v=1772041767423" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://winston.ink">
+        <h1 class="site-title">Winston</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://winston.ink/post-images/faststone-capture.png')">
+            </div>
+          
+          <h2 class="post-title">FastStone Capture</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2025-04-24</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://winston.ink/tag/app/">
+                    软件
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content" v-pre>
+            <p>FastStone Capture 一个极简主义的应用程序<br>
+支持屏幕录制、滚动截图、高清长图、图片编辑、图片转PDF格式、屏幕取色</p>
+<!-- more -->
+<p>功能简介：</p>
+<p>高清截屏，给您最清晰的表达<br>
+可抓取某窗口或对象图片,全屏或以矩形模式抓图，甚至可以按照手绘的任意形状抓图。</p>
+<p>滚动截图，细节内容一览无余<br>
+选定某个窗口或对象区域,轻点鼠标即可进行滚动截图,获取高清长图。</p>
+<p>屏幕录制，步骤操作细致流畅<br>
+屏幕录像机功能可以将窗口/对象、矩形区域或全屏区域的屏幕录制为高清晰视频。</p>
+<p>图片编辑，样式丰富应有尽有<br>
+所有主流图片格式,以其独有的光滑和毛刺处理技术让图片更加清晰,提供缩放,旋转,减切,颜色调整功能。</p>
+<p><strong>下载地址：</strong><br>
+<a href="https://bucket.lanzoub.com/iktSw2ucfq4f" target="_blank">FastStoneCapture_V9.7.zip</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://winston.ink/post/win-rename/">
+              <h3 class="post-title">
+                下一篇：批量修改文件名
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">Stay Young Stay Simple</div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/braumhuang" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://x.com/braumhuang" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://winston.ink/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Clipdiary | Winston</title>
+<meta name="description" content="Stay Young Stay Simple">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://winston.ink/favicon.ico?v=1772041767423">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://winston.ink/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://winston.ink">
+        <img class="avatar" src="https://winston.ink/images/avatar.png?v=1772041767423" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://winston.ink">
+        <h1 class="site-title">Winston</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://winston.ink/post-images/clipdiary.jpg')">
+            </div>
+          
+          <h2 class="post-title">Clipdiary</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2025-01-17</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://winston.ink/tag/app/">
+                    软件
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content" v-pre>
+            <p>Clipdiary是一款轻量级的专业剪贴板管理工具，拥有强大的历史记录查看功能，并且还拥有便利的中文界面，能够自动保存你复制粘贴的文本内容，是你可以提供历史记录查看需要的内容，很好解决因为断电等问题导致剪贴板内容丢失或是剪贴板为纯文本带来的不便。软件支持XP、Windows 7/8以及最新的Windows10系统，运行后用户可记录每一条复制到Windows剪贴板中的数据，软件使用非常方便，它运行于系统托盘当中，你每次所做的拷贝动作，它都会为你自动保存，并且提供了一个最近拷贝项目的列表，你可以随时对拷贝历史进行调用。此外，软件支持快捷键操作，通过CTRL+C可进行信息复制，默认使用CTRL+D可打开该软件，双击列表中的项目可实现粘贴。能够提高您的工作效率，节省大量的时间。</p>
+<!-- more -->
+<p>Clipdiary 功能很丰富，官网列出了如下特性：</p>
+<ul>
+<li>监视剪贴板并自动保存其内容到剪贴板历史</li>
+<li>可处理文本，链接，图像，文件及所有其它剪贴板格式</li>
+<li>支持给剪辑加星标和标签。标记为重要剪辑并使用标签将它们分组到文件夹内</li>
+<li>片段 – 用于快速粘贴的常用文本模板</li>
+<li>系统重启时保持剪贴板历史</li>
+<li>在需要时您可找回存储到剪贴板历史内的数据，即使是数年后也可</li>
+<li>支持数据库加密（AES-256）</li>
+</ul>
+<p><strong>下载地址：</strong><br>
+<a href="https://bucket.lanzoub.com/iFdVv2l5h6if" target="_blank">Clipdiary_V5.7.exe</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://winston.ink/post/paste-app/">
+              <h3 class="post-title">
+                下一篇：Paste
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">Stay Young Stay Simple</div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/braumhuang" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://x.com/braumhuang" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://winston.ink/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

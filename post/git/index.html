@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Git常用命令 | Winston</title>
+<meta name="description" content="Stay Young Stay Simple">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://winston.ink/favicon.ico?v=1772041767423">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://winston.ink/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://winston.ink">
+        <img class="avatar" src="https://winston.ink/images/avatar.png?v=1772041767423" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://winston.ink">
+        <h1 class="site-title">Winston</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Git常用命令</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-11-18</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://winston.ink/tag/develop/">
+                    开发
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content" v-pre>
+            <p>Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。</p>
+<!-- more -->
+<p>查看Git版本号<br>
+<code>git --version</code></p>
+<p>新建SSH<br>
+<code>ssh-keygen -t rsa -C &quot;&quot;braum@sina.com&quot;&quot; -f ~/.ssh/braum</code></p>
+<p>初次使用Git前的配置<br>
+<code>git config --global user.name &quot;&quot;John Doe&quot;&quot;</code><br>
+<code>git config --global user.email johndoe@example.com</code></p>
+<p>添加远程仓库地址<br>
+<code>git remote add origin URL</code></p>
+<p>Git的初始化<br>
+<code>git init</code></p>
+<p>暂存工作区<br>
+<code>git stash</code></p>
+<p>查看暂存的记录<br>
+<code>git stash list</code></p>
+<p>暂存 --恢复到--&gt; 工作区<br>
+<code>git stash apply</code><br>
+<code>git stash apply stash@{0}</code><br>
+删除暂存记录<br>
+<code>git stash drop</code></p>
+<p>暂存内容恢复到工作区，并删除<br>
+<code>git stash pop</code></p>
+<p>添加到暂存区<br>
+<code>git add 文件名</code></p>
+<p>提交到仓库<br>
+<code>git commit -m &quot;&quot;描述&quot;&quot;</code></p>
+<p>已跟踪的文件添加和提交<br>
+<code>git commit -am &quot;&quot;描述&quot;&quot;</code></p>
+<p>修改上一次的提交描述<br>
+<code>git commit --amend -m &quot;&quot;新的说明&quot;&quot;</code></p>
+<p>修改上一次提交的时间<br>
+<code>$ date -R</code><br>
+<code>git commit --amend  --date=&quot;&quot;想要commit的时间&quot;&quot;</code></p>
+<p>查看状态<br>
+<code>git status</code></p>
+<p>恢复暂存区至以前的状态<br>
+<code>git reset HEAD</code></p>
+<p>恢复暂存区的某个文件至以前的状态<br>
+<code>git reset HEAD 文件名</code></p>
+<p>恢复工作区的某个文件至以前的状态<br>
+<code>git checkout -- 文件名</code><br>
+<code>git checkout .</code></p>
+<p>暂时回到某版本<br>
+<code>git checkout 版本号</code></p>
+<p>查看历史提交<br>
+<code>git log</code><br>
+<code>git log --oneline</code><br>
+<code>git log --decorate --oneline --graph --all</code></p>
+<p>查看所有的历史版本<br>
+<code>git reflog</code></p>
+<p>移动指针到上一个版本，暂存区文件回到上一个版本<br>
+<code>git reset HEAD~</code><br>
+<code>git reset HEAD~10</code><br>
+<code>git reset --mixed HEAD~</code></p>
+<p>移动指针到上一个版本<br>
+<code>git reset --soft HEAD~</code></p>
+<p>移动指针到上一个版本，暂存区和工作区文件回到上一个版本<br>
+<code>git reset --hard HEAD~</code></p>
+<p>回滚到指定版本<br>
+<code>git reset 版本号</code><br>
+<code>git reset --mixed 版本号</code></p>
+<p>回滚个别文件(此时不移动指针)<br>
+<code>git reset 版本号 文件名/路径</code><br>
+<code>git reset HEAD 文件名</code></p>
+<p>比较工作区和暂存区的不同<br>
+<code>git diff</code></p>
+<p>比较两个历史版本的不同<br>
+<code>git diff 版本号 版本号</code></p>
+<p>比较工作区和仓库中的不同<br>
+<code>git diff 版本号</code></p>
+<p>比较暂存区和仓库中的不同<br>
+<code>git diff --cached 版本号</code></p>
+<p>删除文件(删除工作区和暂存区的文件)<br>
+<code>git rm 文件名</code></p>
+<p>暴力删除(工作区和暂存区的文件不同时)<br>
+<code>git rm -f 文件名</code></p>
+<p>只删除暂存区的文件<br>
+<code>git rm --cached  文件名</code></p>
+<p>重命名文件<br>
+<code>git mv 旧文件名 新文件名</code></p>
+<p>创建分支<br>
+<code>git branch 分支名</code></p>
+<p>创建并切换分支<br>
+<code>git checkout -b 分支名</code></p>
+<p>切换分支<br>
+<code>git checkout 分支名</code></p>
+<p>合并分支<br>
+<code>git merge 分支名</code></p>
+<p>删除分支<br>
+<code>git branch -d 分支名</code></p>
+<p>推送到远程仓库<br>
+<code>git push URL master</code></p>
+<p>拉取远程仓库<br>
+<code>git pull URL master</code></p>
+<p>克隆远程仓库<br>
+<code>git clone URL</code></p>
+<p>查看分支<br>
+<code>git branch -a</code></p>
+<p>拉取远程分支到本地<br>
+<code>git fetch</code><br>
+<code>git fetch origin 远程分支名:本地分支名</code></p>
+<p>创建分支A，并将远程分支B拉至本地<br>
+<code>git checkout -b 分支名A origin/分支名B</code></p>
+<p>查看远程仓库地址<br>
+<code>git remote -v</code></p>
+<p>删除远程分支<br>
+<code>git push origin :远程分支名 </code></p>
+<p>Git修改远程仓库地址 方法有三种：<br>
+1.修改命令<br>
+<code>git remote set-url origin URL</code><br>
+2.先删后加<br>
+<code>git remote rm origin</code><br>
+<code>git remote add origin URL</code><br>
+3.直接修改config文件</p>
+<p>查看所有标签<br>
+<code>git tag</code></p>
+<p>添加标签<br>
+<code>git tag Qualitrain_release_1.1.1_11-12-18</code></p>
+<p>给某次提交添加标签<br>
+<code>git tag v1.1 6224937</code></p>
+<p>查看标签信息<br>
+<code>git show Qualitrain_release_1.0_30-09-18</code></p>
+<p>添加详细信息标签<br>
+<code>git tag -a v0.1 -m &quot;&quot;version 0.1 released&quot;&quot; 3628164</code></p>
+<p>删除标签<br>
+<code>git tag -d Qualitrain_release_1.1_10-10-18</code></p>
+<p>删除远程标签<br>
+<code>git push origin :refs/tags/Qualitrain_release_1.1_10-10-18</code></p>
+<p>推送某个标签到远程<br>
+<code>git push origin Qualitrain_release_1.1.1_11-12-18</code></p>
+<p>推送所有标签<br>
+<code>git push origin --tags</code></p>
+<p>删除 untracked files<br>
+<code>git clean -f</code></p>
+<p>连 untracked 的目录也一起删掉<br>
+<code>git clean -fd</code></p>
+<p>先<br>
+<code>git submodule init </code><br>
+然后<br>
+<code>git submodule update</code></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://winston.ink/post/homebrew/">
+              <h3 class="post-title">
+                下一篇：Homebrew常用命令
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">Stay Young Stay Simple</div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/braumhuang" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://x.com/braumhuang" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://winston.ink/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
