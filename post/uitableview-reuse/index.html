@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>TableView重用 | Winston</title>
+<meta name="description" content="Stay Young Stay Simple">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://winston.ink/favicon.ico?v=1779827263638">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://winston.ink/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://winston.ink">
+        <img class="avatar" src="https://winston.ink/images/avatar.png?v=1779827263638" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://winston.ink">
+        <h1 class="site-title">Winston</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">TableView重用</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-01-03</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://winston.ink/tag/develop/">
+                    开发
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content" v-pre>
+            <pre><code>Cell注册的两种方式
+1.tableView registerNib:(nullable UINib *) forCellReuseIdentifier:(nonnull NSString *)
+2.tableView registerClass:(nullable Class) forCellReuseIdentifier:(nonnull NSString *)
+Cell注册的形式：
+(1)系统cell
+    1.注册
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@&quot;cell&quot;];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@&quot;cell&quot; forIndexPath:indexPath];
+    2.不注册
+    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@&quot;cell&quot;];
+    if (cell==nil) {
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@&quot;cell&quot;];
+    }
+(2)自定义cell
+    1.注册
+    [self.tableView registerClass:[xxxxCell class] forCellReuseIdentifier:@&quot;cell&quot;];
+    xxxxCell *cell = [tableView dequeueReusableCellWithIdentifier:@&quot;cell&quot; forIndexPath:indexPath];
+  2.不注册
+    xxxxCell *cell=[tableView dequeueReusableCellWithIdentifier:@&quot;cell&quot;];
+    if (cell==nil) {
+        cell=[[xxxxCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@&quot;cell&quot;];
+    }
+(3)自定义cellXib注册
+    1.注册
+    [tableView registerNib:[UINib nibWithNibName:@&quot;xxxxViewCell&quot; bundle:nil] forCellReuseIdentifier:@&quot;Cell&quot;];
+    xxxxCell *cell = [tableView dequeueReusableCellWithIdentifier:@&quot;Cell&quot; forIndexPath:indexPath];
+    2.不注册
+     xxxxCell *cell=[tableView dequeueReusableCellWithIdentifier:@&quot;cell&quot;];
+    if (cell == nil) {
+        cell=[[[NSBundle mainBundle]loadNibNamed:@“xxxxCell&quot; owner:self options:nil]lastObject];
+    }
+(4)storyboard自定义cell
+    简述：在storyBoard中拖出一个TableViewController，编辑controller上的Cell，可以拖出Imageview和Label，然后建立一个基于UITableViewCell类xxxxViewCell，将StoryBoard上的空间拖对应的属性到xxxxViewCell的.h文件中,同时在StoryBoard中选中TableView—&gt;content设置是动态cell Dynamic Prototypes 还是静态cell Static Cells同时可以设置Cell的rows height，然后选中Cell关联创建的Cell类xxxxViewCell同时设置Identifider 如：cellId
+    复用：
+    xxxxViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@&quot;cellId&quot; forIndexPath:indexPath];
+
+
+
+自测版本
+在iOS9.3和iOS8.1下测试，只要为tableview注册了相应的cell类，无论用两种方法中的哪一种，都不用手动创建就能获得cell，不会为nil。
+然而如果没有为tableview注册cell类，则dequeueReusableCellWithIdentifier:forIndexPath:会crash，crash原因为“must register a nib or a class for the identifier or connect a prototype cell in a storyboard”，即dequeueReusableCellWithIdentifier:forIndexPath:方法必须与register方法配套使用。
+但如果没有为tableview注册cell类，dequeueReusableCellWithIdentifier:方法也不会崩溃，只是会返回nil，此时需要我们手动创建cell，如果未创建，则程序会crash，crash原因为“UITableView failed to obtain a cell from its dataSource”，即此时tableView无法获取到cell实例。
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://winston.ink/post/ios-property/">
+              <h3 class="post-title">
+                下一篇：属性声明
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">Stay Young Stay Simple</div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/braumhuang" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://x.com/braumhuang" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://weibo.com/u/5309307516" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://passage.winston.ink/admin" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea/releases" target="_blank">Gridea</a> | <a class="rss" href="https://winston.ink/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
