@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="generator" content="Gridea Pro 1.2.2">
+    <title>Git常用命令 · Winston</title>
+
+    
+    
+    <meta name="description" content="Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。
+
+查看Git版本号
+git --version
+新建SSH
+ssh-keygen -t rsa -C &amp;quot...">
+    
+
+    
+    <meta property="og:site_name" content="Winston">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Git常用命令">
+    <meta property="og:description" content="Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。
+
+查看Git版本号
+git --version
+新建SSH
+ssh-keygen -t rsa -C &amp;quot...">
+    
+    <meta property="og:image" content="/images/avatar.png">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Git常用命令">
+    <meta name="twitter:description" content="Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。
+
+查看Git版本号
+git --version
+新建SSH
+ssh-keygen -t rsa -C &amp;quot...">
+
+    
+    
+
+    
+    
+    <link rel="alternate" type="application/atom+xml" title="Winston" href="/feed.xml">
+    
+
+    
+    <link rel="stylesheet" href="/styles/main.css">
+
+    
+    <style>
+    :root {
+      --color-primary: #e53935;
+      --color-primary-hover: #c62828;
+      --container-width: 840px;
+      --font-stack-body: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    }
+    </style>
+
+    
+    <script>
+    (function(){
+      try {
+        var saved = localStorage.getItem('kehua-theme');
+        var preset = "auto";
+        var theme;
+        if (saved === 'dark' || saved === 'light') {
+          theme = saved;
+        } else if (preset === 'dark' || preset === 'light') {
+          theme = preset;
+        } else {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        if (theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch(e) {}
+    })();
+    </script>
+
+    
+    
+    
+
+    
+<meta name="description" content="Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。">
+<link rel="canonical" href="https://winston.ink/post/git/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Git常用命令","url":"https://winston.ink/post/git/","description":"Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。","datePublished":"2019-11-18T00:00:00+08:00","dateModified":"2026-06-17T19:35:15+08:00","author":{"@type":"Person","name":"Winston"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Winston"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://winston.ink","name":"Winston","position":1},{"@type":"ListItem","item":"https://winston.ink/post/git/","name":"Git常用命令","position":2}]}</script>
+</head>
+<body class="post">
+    
+<header class="header" role="banner">
+    <div class="header-inner">
+        <a href="/" class="logo" aria-label="Winston">
+            
+                <span class="logo-text">Winston</span>
+            
+        </a>
+
+        <nav class="nav" aria-label="主导航">
+            
+                <a href="/" class="nav-link">首页</a>
+            
+                <a href="/memos" class="nav-link">闪念</a>
+            
+                <a href="/archives" class="nav-link">归档</a>
+            
+                <a href="/tags" class="nav-link">标签</a>
+            
+                <a href="/links" class="nav-link">导航</a>
+            
+                <a href="/post/about" class="nav-link">关于</a>
+            
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn-icon" id="theme-toggle" type="button" title="切换主题（Cmd/Ctrl+D）" aria-label="切换深浅模式">
+                <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+
+            
+            <button class="btn-icon" id="search-toggle" type="button" title="搜索（Cmd/Ctrl+K）" aria-label="搜索">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+            
+
+            <button class="btn-icon mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-label="打开移动端菜单" aria-expanded="false">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+
+<div class="mobile-nav" id="mobile-nav" aria-label="移动端导航">
+    
+        <a href="/" class="mobile-nav-link">首页</a>
+    
+        <a href="/memos" class="mobile-nav-link">闪念</a>
+    
+        <a href="/archives" class="mobile-nav-link">归档</a>
+    
+        <a href="/tags" class="mobile-nav-link">标签</a>
+    
+        <a href="/links" class="mobile-nav-link">导航</a>
+    
+        <a href="/post/about" class="mobile-nav-link">关于</a>
+    
+</div>
+
+
+
+
+<div class="search-modal" id="search-modal" role="dialog" aria-modal="true" aria-label="站内搜索">
+    <div class="search-modal-content">
+        <div class="search-input-wrapper">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-input" class="search-input" placeholder="搜索标题、摘要、标签..." autocomplete="off" spellcheck="false" aria-label="搜索关键词">
+            <button type="button" class="search-close" id="search-close" aria-label="关闭搜索">&times;</button>
+        </div>
+
+        <div class="search-results" id="search-results" role="listbox" aria-label="搜索结果">
+            <p class="search-empty">输入关键词开始搜索 · 支持标题 / 摘要 / 标签</p>
+        </div>
+
+        <div class="search-shortcuts">
+            <span><kbd>↵</kbd> 打开</span>
+            <span><kbd>↑</kbd><kbd>↓</kbd> 切换</span>
+            <span><kbd>esc</kbd> 关闭</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <main class="main" role="main">
+        
+<article class="article-detail">
+
+    <header class="article-header">
+        <h1 class="article-title">Git常用命令</h1>
+        <div class="article-meta">
+            <time class="article-date" datetime="2019-11-18">2019-11-18</time>
+            
+            <span class="article-meta-sep">·</span>
+            <span class="article-category">
+                <a href="/category/note/">笔记</a>
+            </span>
+            
+            <span class="article-meta-sep">·</span>
+            <span class="article-reading-time">4 分钟阅读</span>
+            <span class="article-meta-sep">·</span>
+            <span class="article-word-count">2589 字</span>
+        </div>
+    </header>
+
+    
+
+    <div class="article-content">
+        <p>Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。</p>
+<!-- more -->
+<p>查看Git版本号<br />
+<code>git --version</code></p>
+<p>新建SSH<br />
+<code>ssh-keygen -t rsa -C &quot;&quot;braum@sina.com&quot;&quot; -f ~/.ssh/braum</code></p>
+<p>初次使用Git前的配置<br />
+<code>git config --global user.name &quot;&quot;John Doe&quot;&quot;</code><br />
+<code>git config --global user.email johndoe@example.com</code></p>
+<p>添加远程仓库地址<br />
+<code>git remote add origin URL</code></p>
+<p>Git的初始化<br />
+<code>git init</code></p>
+<p>暂存工作区<br />
+<code>git stash</code></p>
+<p>查看暂存的记录<br />
+<code>git stash list</code></p>
+<p>暂存 &ndash;恢复到&ndash;&gt; 工作区<br />
+<code>git stash apply</code><br />
+<code>git stash apply stash@{0}</code><br />
+删除暂存记录<br />
+<code>git stash drop</code></p>
+<p>暂存内容恢复到工作区，并删除<br />
+<code>git stash pop</code></p>
+<p>添加到暂存区<br />
+<code>git add 文件名</code></p>
+<p>提交到仓库<br />
+<code>git commit -m &quot;&quot;描述&quot;&quot;</code></p>
+<p>已跟踪的文件添加和提交<br />
+<code>git commit -am &quot;&quot;描述&quot;&quot;</code></p>
+<p>修改上一次的提交描述<br />
+<code>git commit --amend -m &quot;&quot;新的说明&quot;&quot;</code></p>
+<p>修改上一次提交的时间<br />
+<code>$ date -R</code><br />
+<code>git commit --amend  --date=&quot;&quot;想要commit的时间&quot;&quot;</code></p>
+<p>查看状态<br />
+<code>git status</code></p>
+<p>恢复暂存区至以前的状态<br />
+<code>git reset HEAD</code></p>
+<p>恢复暂存区的某个文件至以前的状态<br />
+<code>git reset HEAD 文件名</code></p>
+<p>恢复工作区的某个文件至以前的状态<br />
+<code>git checkout -- 文件名</code><br />
+<code>git checkout .</code></p>
+<p>暂时回到某版本<br />
+<code>git checkout 版本号</code></p>
+<p>查看历史提交<br />
+<code>git log</code><br />
+<code>git log --oneline</code><br />
+<code>git log --decorate --oneline --graph --all</code></p>
+<p>查看所有的历史版本<br />
+<code>git reflog</code></p>
+<p>移动指针到上一个版本，暂存区文件回到上一个版本<br />
+<code>git reset HEAD~</code><br />
+<code>git reset HEAD~10</code><br />
+<code>git reset --mixed HEAD~</code></p>
+<p>移动指针到上一个版本<br />
+<code>git reset --soft HEAD~</code></p>
+<p>移动指针到上一个版本，暂存区和工作区文件回到上一个版本<br />
+<code>git reset --hard HEAD~</code></p>
+<p>回滚到指定版本<br />
+<code>git reset 版本号</code><br />
+<code>git reset --mixed 版本号</code></p>
+<p>回滚个别文件(此时不移动指针)<br />
+<code>git reset 版本号 文件名/路径</code><br />
+<code>git reset HEAD 文件名</code></p>
+<p>比较工作区和暂存区的不同<br />
+<code>git diff</code></p>
+<p>比较两个历史版本的不同<br />
+<code>git diff 版本号 版本号</code></p>
+<p>比较工作区和仓库中的不同<br />
+<code>git diff 版本号</code></p>
+<p>比较暂存区和仓库中的不同<br />
+<code>git diff --cached 版本号</code></p>
+<p>删除文件(删除工作区和暂存区的文件)<br />
+<code>git rm 文件名</code></p>
+<p>暴力删除(工作区和暂存区的文件不同时)<br />
+<code>git rm -f 文件名</code></p>
+<p>只删除暂存区的文件<br />
+<code>git rm --cached  文件名</code></p>
+<p>重命名文件<br />
+<code>git mv 旧文件名 新文件名</code></p>
+<p>创建分支<br />
+<code>git branch 分支名</code></p>
+<p>创建并切换分支<br />
+<code>git checkout -b 分支名</code></p>
+<p>切换分支<br />
+<code>git checkout 分支名</code></p>
+<p>合并分支<br />
+<code>git merge 分支名</code></p>
+<p>删除分支<br />
+<code>git branch -d 分支名</code></p>
+<p>推送到远程仓库<br />
+<code>git push URL master</code></p>
+<p>拉取远程仓库<br />
+<code>git pull URL master</code></p>
+<p>克隆远程仓库<br />
+<code>git clone URL</code></p>
+<p>查看分支<br />
+<code>git branch -a</code></p>
+<p>拉取远程分支到本地<br />
+<code>git fetch</code><br />
+<code>git fetch origin 远程分支名:本地分支名</code></p>
+<p>创建分支A，并将远程分支B拉至本地<br />
+<code>git checkout -b 分支名A origin/分支名B</code></p>
+<p>查看远程仓库地址<br />
+<code>git remote -v</code></p>
+<p>删除远程分支<br />
+<code>git push origin :远程分支名 </code></p>
+<p>Git修改远程仓库地址 方法有三种：<br />
+1.修改命令<br />
+<code>git remote set-url origin URL</code><br />
+2.先删后加<br />
+<code>git remote rm origin</code><br />
+<code>git remote add origin URL</code><br />
+3.直接修改config文件</p>
+<p>查看所有标签<br />
+<code>git tag</code></p>
+<p>添加标签<br />
+<code>git tag Qualitrain_release_1.1.1_11-12-18</code></p>
+<p>给某次提交添加标签<br />
+<code>git tag v1.1 6224937</code></p>
+<p>查看标签信息<br />
+<code>git show Qualitrain_release_1.0_30-09-18</code></p>
+<p>添加详细信息标签<br />
+<code>git tag -a v0.1 -m &quot;&quot;version 0.1 released&quot;&quot; 3628164</code></p>
+<p>删除标签<br />
+<code>git tag -d Qualitrain_release_1.1_10-10-18</code></p>
+<p>删除远程标签<br />
+<code>git push origin :refs/tags/Qualitrain_release_1.1_10-10-18</code></p>
+<p>推送某个标签到远程<br />
+<code>git push origin Qualitrain_release_1.1.1_11-12-18</code></p>
+<p>推送所有标签<br />
+<code>git push origin --tags</code></p>
+<p>删除 untracked files<br />
+<code>git clean -f</code></p>
+<p>连 untracked 的目录也一起删掉<br />
+<code>git clean -fd</code></p>
+<p>先<br />
+<code>git submodule init </code><br />
+然后<br />
+<code>git submodule update</code></p>
+
+    </div>
+
+    
+    <div class="article-tags">
+        <span class="tag-label">标签：</span>
+        
+            <a href="/tag/tutorial/" class="tag">教程</a>
+        
+    </div>
+    
+
+    
+    
+</article>
+
+
+
+
+
+    </main>
+
+    
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        
+        <p class="footer-text">Stay Young Stay Simple</p>
+        
+
+        <div class="footer-info">
+            © 2026 <a href="/">Winston</a>
+            
+             · <a href="https://github.com/Gridea-Pro/gridea-pro-themes/tree/main/themes/kehua" target="_blank">Theme</a> by <a href="https://kehua.me" target="_blank">Kehua</a>
+            
+        </div>
+    </div>
+</footer>
+
+
+<button class="back-to-top" id="back-to-top" type="button" title="回到顶部" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
+
+
+
+    
+    <script src="/scripts/main.js" defer></script>
+
+    
+    
+
+    
+
+<script>
+  window.__KEHUA_PAGE_FLAGS__ = {
+    readingProgress: true,
+    codeCopy: true
+  };
+</script>
+
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: kehua v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>
